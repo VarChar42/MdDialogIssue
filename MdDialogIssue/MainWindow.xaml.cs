@@ -18,10 +18,11 @@ public partial class MainWindow : Window
         mainWindowTabs = new ObservableCollection<TabItem>();
     }
 
-    private void AddPage(Page page, string header)
+    private void AddPage(Page page, string header, bool selected = false)
     {
         var tabItem = new TabItem
         {
+            IsSelected = selected,
             Header = header,
             Content = new Frame
             {
@@ -34,6 +35,6 @@ public partial class MainWindow : Window
     private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
     {
         TestControl.ItemsSource = mainWindowTabs;
-        AddPage(new TestPage(), "TestPage");
+        AddPage(new TestPage(), "TestPage",  true);
     }
 }
